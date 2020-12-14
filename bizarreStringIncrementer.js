@@ -2,16 +2,31 @@
 
 const bizarreStringIncrementer = (bizarreString) => {
   let resultStr = "";
+  let numberStr = "";
+  let zeroCount = 0;
+  let numberCount = 0;
   for (const digit of getStringAndNumber(bizarreString).lastNumbers) {
     if (isNumber(digit)) {
-      resultStr += digit;
-    } else {
-      break;
+      numberStr += digit;
+      if(Number(digit)==0 && zeroCount<2){
+      	zeroCount +=1;
+      } else {
+      	numberCount +=1;
+      }
     }
   }
+  
+  resultStr = Number(numberStr) + 1;
+  
+  if(zeroCount>1 && resultStr.toString().length==numberCount){
+  	padZero = "00"
+  } else if(zeroCount==2){
+  	padZero = "0"
+  } else {
+  	padZero = ""
+  }
   return (
-    getStringAndNumber(bizarreString).firstString.join("") +
-    (Number(resultStr) + 1)
+    getStringAndNumber(bizarreString).firstString.join("") + padZero + resultStr
   );
 };
 
@@ -37,4 +52,6 @@ let isNumber = (letter) => {
   return pattern.test(letter);
 };
 
-module.exports = bizarreStringIncrementer;
+//console.log(bizarreStringIncrementer("foo0098"));
+
+module.exports = {bizarreStringIncrementer};
