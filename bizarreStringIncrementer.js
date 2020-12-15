@@ -20,7 +20,7 @@ const bizarreStringIncrementer = (bizarreString) => {
   
   if(zeroCount>1 && resultStr.toString().length==numberCount){
   	padZero = "00"
-  } else if(zeroCount==2){
+  } else if(zeroCount==2 || zeroCount==1){
   	padZero = "0"
   } else {
   	padZero = ""
@@ -52,6 +52,6 @@ let isNumber = (letter) => {
   return pattern.test(letter);
 };
 
-//console.log(bizarreStringIncrementer("foo0098"));
+console.log(bizarreStringIncrementer("foo041"));
 
-module.exports = {bizarreStringIncrementer};
+//module.exports = {bizarreStringIncrementer};
